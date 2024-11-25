@@ -1,3 +1,4 @@
+import sys
 class Assembler:
     def __init__(self, source_path, binary_path, log_path):
         self.binary_file_path = binary_path
@@ -88,4 +89,14 @@ class Assembler:
                 s = s.split()
 
         self.logs += '\n</log>'
-        self.write()
+
+def main():
+    # получаем аргументы из командной строки
+    arguments = sys.argv[1:]  # пропускаем первый элемент (название программы)
+    prog_path, bin_file_path, log_file_path = arguments
+    asm = Assembler(prog_path, bin_file_path, log_file_path)
+    asm.assembly()
+    asm.write()
+
+if __name__ == "__main__":
+    main()
