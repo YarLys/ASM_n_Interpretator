@@ -42,7 +42,7 @@ class Interpretator:
                 result |= (bit << i)
         return result
 
-    def get_high_bits(self, command, n):  # Функция для получения n младших битов
+    def get_high_bits(self, command, n):  # Функция для получения n старших битов
         total_bits = 32
         remaining_bits = total_bits - n
         result = 0
