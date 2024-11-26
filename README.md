@@ -19,6 +19,7 @@
 |-|-|
 |Биты 0-6|Биты 7-29|
 |104|Константа|
+
 Размер команды: 4 байт. Операнд: поле B. Результат: новый элемент на стеке.
 Тест (A=104, B=920):
 Байт-код: 0x68, 0xCC, 0x01, 0x00
@@ -28,6 +29,7 @@
 |-|-|
 |Биты 0-6|Биты 7-27|
 |45|Адрес|
+
 Размер команды: 4 байт. Операнд: значение в памяти по адресу, которым является поле B. Результат: новый элемент на стеке.
 Тест (A=45, B=255):
 Байт-код: 0xAD, 0x7F, 0x00, 0x00
@@ -37,6 +39,7 @@
 |-|
 |Биты 0-6|
 |8|
+
 Размер команды: 4 байт. Операнд: элемент, снятый с вершины стека.
 Результат: значение в памяти по адресу, которым является элемент, снятый с вершины стека.
 Тест (A=8):
@@ -47,6 +50,7 @@
 |-|-|
 |Биты 0-6|Биты 7-18|
 |91|Смещение|
+
 Размер команды: 4 байт. Первый операнд: значение в памяти по адресу, которым является сумма адреса (элемент, снятый с вершины стека) и смещения (поле B). Второй операнд: элемент, снятый с вершины стека. Результат: новый элемент на стеке.
 Тест (A=91, B=339):
 Байт-код: 0xDB, 0xA9, 0x00, 0x00
@@ -87,5 +91,60 @@
 Получает ключи, заданные в командной строке, запускает работу интерпретатора.
 
 ## Пример работы программы
+Тестовая программа: Выполнить поэлементно операцию сложение над двумя векторами длины 4. Результат записать во второй вектор.
+Файл с исходным кодом:
+```
+LOAD_CONST 5
+LOAD_CONST 100
+LOAD_CONST 10
+LOAD_CONST 1
+LOAD_CONST 17
+LOAD_CONST 8
+LOAD_CONST 21
+LOAD_CONST 12
+WRITE_MEM
+WRITE_MEM
+WRITE_MEM
+WRITE_MEM
+WRITE_MEM
+WRITE_MEM
+WRITE_MEM
+WRITE_MEM
+LOAD_CONST 5
+LOAD_CONST 100
+ADD 0
+LOAD_CONST 10
+LOAD_CONST 1
+ADD 0
+LOAD_CONST 17
+LOAD_CONST 8
+ADD 0
+LOAD_CONST 21
+LOAD_CONST 12
+ADD 0
+```
+
+Выходной xml файл:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<output>
+	<MEMORY ADDR=1>1</MEMORY>
+	<MEMORY ADDR=5>5</MEMORY>
+	<MEMORY ADDR=8>8</MEMORY>
+	<MEMORY ADDR=10>10</MEMORY>
+	<MEMORY ADDR=12>12</MEMORY>
+	<MEMORY ADDR=17>17</MEMORY>
+	<MEMORY ADDR=21>21</MEMORY>
+	<MEMORY ADDR=100>100</MEMORY>
+</output
+```
 
 ## Результаты тестирования
+![image](https://github.com/user-attachments/assets/47c28ef5-cf51-4fda-b33b-78edb3bf90e1)
+![image](https://github.com/user-attachments/assets/92e00bb4-d5b0-4bfe-bcbd-85ff3debc7be)
+![image](https://github.com/user-attachments/assets/e9f58c62-32b3-4487-b3dd-26ee10704a72)
+![image](https://github.com/user-attachments/assets/9c33ea6c-6cfc-4450-921c-1defb87e3855)
+
+
+
+
