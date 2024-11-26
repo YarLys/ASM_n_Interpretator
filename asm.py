@@ -87,7 +87,6 @@ class Assembler:
 
                 s = file.readline()
                 s = s.split()
-
         self.logs += '\n</log>'
 
 def main():

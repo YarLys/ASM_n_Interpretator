@@ -87,8 +87,6 @@ class Interpretator:
                         raise IndexError('Стек пуст, невозможно получить значение для выполнения операции!')
                     except KeyError:
                         raise KeyError('Не существует значения в памяти по используемому адресу!')
-        print(self.stack)
-        print(self.memory)
 
     def write_output(self):
         for i in range(self.mem_begin, self.mem_end + 1):
